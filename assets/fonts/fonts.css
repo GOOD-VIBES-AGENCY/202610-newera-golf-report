@@ -1,0 +1,3 @@
+/* 自前配信の書体（このページで使う文字だけ）。Inter・Noto Sans JP は SIL Open Font License 1.1 */
+@font-face{font-family:"Inter";src:url("Inter-subset.woff2") format("woff2");font-weight:400 700;font-style:normal;font-display:swap}
+@font-face{font-family:"Noto Sans JP";src:url("NotoSansJP-subset.woff2") format("woff2");font-weight:400 700;font-style:normal;font-display:swap}
