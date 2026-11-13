@@ -33,8 +33,9 @@ h3.h3 + .cap{font-size:14px;color:var(--gva-fg-sub);margin-bottom:24px;max-width
 .thumb.reel{width:64px;aspect-ratio:9/16}
 .thumb.feed{width:72px;aspect-ratio:1/1}
 .thumb.fallback{display:flex;align-items:center;justify-content:center;padding:8px;color:#fff;font-family:var(--gva-f-ja);font-size:12px;font-weight:700;line-height:1.35;text-align:center}
-.reelstrip{display:flex;gap:10px;margin-top:18px;max-width:100%;min-width:0;overflow-x:auto;padding-bottom:6px;scroll-snap-type:x mandatory}
-.reelstrip .thumb{flex:0 0 auto;scroll-snap-align:start}
+.proof,.proof ol,.proof li{min-width:0}
+.reelstrip{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px;max-width:100%;min-width:0}
+.reelstrip .thumb{flex:0 0 auto}
 .proof .reelstrip + .cap{margin:10px 0 0;font-size:12px;font-weight:700;color:#fff;max-width:none}
 .row .who{align-items:center}
 .mh-right{text-align:right;font-family:var(--gva-f-en);font-size:var(--gva-fs-min);font-weight:500;line-height:1.5;letter-spacing:.04em}
@@ -318,7 +319,6 @@ details.fold .in{padding:4px 0 24px}
   .tbl .planrow span:first-child{padding-left:12px}
   .tbl .r{text-align:right}
   .row{padding:18px 0}
-  .reelstrip{overflow:visible}
   .reelstrip .thumb.reel{width:72px}
   .reelstrip .thumb.feed{width:72px}
   .row .who{grid-column:auto;flex-direction:row;align-items:center;gap:10px}
@@ -329,7 +329,7 @@ details.fold .in{padding:4px 0 24px}
   .row .c{align-items:flex-end;text-align:right}
   .row .c .num{font-size:22px}
   .row.total .c.nf{display:flex}
-  .why li{grid-template-columns:260px 1fr;gap:40px;align-items:baseline}
+  .why li{grid-template-columns:max-content minmax(0,1fr);gap:40px;align-items:baseline}
   .pbars{grid-template-columns:1fr 1fr;gap:64px}
   .reco{border-radius:var(--gva-radius-panel-pc);padding:48px 56px}
   .reco .why2{grid-template-columns:1fr 1fr;gap:40px}
