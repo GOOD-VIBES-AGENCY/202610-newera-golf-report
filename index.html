@@ -33,10 +33,23 @@ h3.h3 + .cap{font-size:14px;color:var(--gva-fg-sub);margin-bottom:24px;max-width
 .thumb.reel{width:64px;aspect-ratio:9/16}
 .thumb.feed{width:72px;aspect-ratio:1/1}
 .thumb.fallback{display:flex;align-items:center;justify-content:center;padding:8px;color:#fff;font-family:var(--gva-f-ja);font-size:12px;font-weight:700;line-height:1.35;text-align:center}
-.proof,.proof ol,.proof li{min-width:0}
-.reelstrip{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px;max-width:100%;min-width:0}
-.reelstrip .thumb{flex:0 0 auto}
-.proof .reelstrip + .cap{margin:10px 0 0;font-size:12px;font-weight:700;color:#fff;max-width:none}
+.proof,.proof ol,.proof li,.proof-media{min-width:0}
+.proof{display:grid}
+.proof h2,.proof-media{grid-column:1/-1}
+.proof h2{order:0}
+.proof ol{display:contents}
+.proof li:nth-of-type(1){order:1;border-bottom:0}
+.proof-media{order:2;padding:0 0 22px;border-bottom:1px solid var(--gva-on-blue-rule)}
+.proof li:nth-of-type(2){order:3}
+.proof li:nth-of-type(3){order:4}
+.proof li:nth-of-type(4){order:5}
+.reelstrip{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:4px;max-width:100%;min-width:0}
+.reelstrip .thumb{width:100%;min-width:0;aspect-ratio:9/16}
+.reelstrip .thumb.fallback{font-size:clamp(8px,2.8vw,12px);padding:6px}
+.proof-media .cap{margin:10px 0 0;font-size:12px;font-weight:700;color:#fff;max-width:none}
+@media (min-width:768px){
+  .reelstrip{grid-template-columns:repeat(6,1fr)}
+}
 .row .who{align-items:center}
 .mh-right{text-align:right;font-family:var(--gva-f-en);font-size:var(--gva-fs-min);font-weight:500;line-height:1.5;letter-spacing:.04em}
 .mh-right span{display:block}
@@ -282,12 +295,14 @@ details.fold .in{padding:4px 0 24px}
   .wordmark{font-size:18px}
   .mh-right{font-size:13px}
   .hero{padding:88px 0 16px}
-  .hero-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:56px;align-items:end}
+  .hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(48px,5vw,72px);align-items:start}
   .key{margin-top:28px}
-  .key .num{font-size:clamp(88px,9vw,128px)}
-  .proof{margin-top:0;padding:32px 36px 16px;border-radius:var(--gva-radius-panel-pc)}
-  .hero-grid{grid-template-columns:minmax(0,6fr) minmax(0,6fr);align-items:start}
-  .proof ol{display:grid;grid-template-columns:1fr 1fr;gap:0 28px}
+  .key .num{font-size:clamp(72px,7.2vw,108px)}
+  .proof{margin-top:0;padding:32px 36px 16px;border-radius:var(--gva-radius-panel-pc);grid-template-columns:1fr 1fr;column-gap:28px}
+  .proof li:nth-of-type(1),.proof li:nth-of-type(2){order:1;border-bottom:0}
+  .proof-media{order:2;padding:16px 0 8px;border-bottom:0;border-top:1px solid var(--gva-on-blue-rule)}
+  .proof li:nth-of-type(3),.proof li:nth-of-type(4){order:3}
+  .reelstrip{margin-top:8px}
   .proof li{padding:18px 0;gap:8px;align-content:start}
   .proof li:nth-last-child(2){border-bottom:0}
   .proof li .num{font-size:36px}
@@ -319,8 +334,6 @@ details.fold .in{padding:4px 0 24px}
   .tbl .planrow span:first-child{padding-left:12px}
   .tbl .r{text-align:right}
   .row{padding:18px 0}
-  .reelstrip .thumb.reel{width:72px}
-  .reelstrip .thumb.feed{width:72px}
   .row .who{grid-column:auto;flex-direction:row;align-items:center;gap:10px}
   .row .thumb.reel{width:52px}
   .row .thumb.feed{width:64px}
@@ -444,7 +457,7 @@ details.fold .in{padding:4px 0 24px}
   .scatter-wrap{display:block}
   .scatter{width:100%;height:auto}
   .wordmark{color:#101010}
-  .reelstrip{display:none}
+  .proof-media,.reelstrip{display:none}
   .row .thumb.reel{width:22pt}
   .row .thumb.feed{width:26pt}
   .thumb{border-radius:4pt;print-color-adjust:exact;-webkit-print-color-adjust:exact}
@@ -488,7 +501,15 @@ details.fold .in{padding:4px 0 24px}
         <h2>根拠は4つ</h2>
         <ol>
           <li><span class="num">5<span class="u">/6本</span></span>
-            <p><strong>ゴルフの場面で、商品を着て撮影。</strong>コース4本、練習場1本。残る1本は画面上で場面を確認できていません。</p>
+            <p><strong>ゴルフの場面で、商品を着て撮影。</strong>コース4本、練習場1本。残る1本は画面上で場面を確認できていません。</p></li>
+          <li><span class="num">71.5<span class="u">〜</span>81.5<span class="u">%</span></span>
+            <p><strong>リール4本は、見た人の7割以上がフォロワー以外。</strong>ふだんの読者の外へ届きました。</p></li>
+          <li><span class="num">5<span class="u">/5本</span></span>
+            <p><strong>確認できたキャプションすべてに<span class="nw">「#ゴルフ」</span><span class="nw">「#ニューエラゴルフ」</span>。</strong>ゴルフの文脈で表示される投稿でした。</p></li>
+          <li><span class="num">4<span class="u">/5人</span></span>
+            <p><strong>見た人の中心は25〜44歳。</strong>年齢が分かる5人のうち4人は7割以上（Yuki 74.5%、SHOTA 71.1%、友永真也 81.2%、岩間恵 83.3%。まこめろは 52.1%）。国が分かる3人では、見た人の 98.4〜98.5% が日本から。</p></li>
+        </ol>
+        <div class="proof-media">
             <div class="reelstrip" aria-label="6本の投稿">
               <a class="thumb reel" href="https://www.instagram.com/reel/DelxykQhviw/" target="_blank" rel="noopener noreferrer"><img src="assets/creatives/iwama.webp" width="360" height="640" alt="岩間恵のInstagram投稿"></a>
               <a class="thumb reel" href="https://www.instagram.com/reel/Delu-D_BNYR/" target="_blank" rel="noopener noreferrer"><img src="assets/creatives/tomonaga.webp" width="360" height="640" alt="友永真也のInstagram投稿"></a>
@@ -497,14 +518,8 @@ details.fold .in{padding:4px 0 24px}
               <a class="thumb feed fallback" href="https://www.instagram.com/p/DegtWUjIBMu/" target="_blank" rel="noopener noreferrer">Instagramで見る</a>
               <a class="thumb reel" href="https://www.instagram.com/reel/DeRUOfBNYpg/" target="_blank" rel="noopener noreferrer"><img src="assets/creatives/shota.webp" width="361" height="640" alt="SHOTAのInstagram投稿"></a>
             </div>
-            <p class="cap">投稿そのもの。タップでInstagramが開きます。</p></li>
-          <li><span class="num">71.5<span class="u">〜</span>81.5<span class="u">%</span></span>
-            <p><strong>リール4本は、見た人の7割以上がフォロワー以外。</strong>ふだんの読者の外へ届きました。</p></li>
-          <li><span class="num">5<span class="u">/5本</span></span>
-            <p><strong>確認できたキャプションすべてに<span class="nw">「#ゴルフ」</span><span class="nw">「#ニューエラゴルフ」</span>。</strong>ゴルフの文脈で表示される投稿でした。</p></li>
-          <li><span class="num">4<span class="u">/5人</span></span>
-            <p><strong>見た人の中心は25〜44歳。</strong>年齢が分かる5人のうち4人は7割以上（Yuki 74.5%、SHOTA 71.1%、友永真也 81.2%、岩間恵 83.3%。まこめろは 52.1%）。国が分かる3人では、見た人の 98.4〜98.5% が日本から。</p></li>
-        </ol>
+            <p class="cap">投稿そのもの。タップでInstagramが開きます。</p>
+        </div>
       </section>
     </div>
   </div>
